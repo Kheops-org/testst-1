@@ -1,0 +1,29 @@
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: testst-1
+  description: first backstage project test
+  links:
+    - url: https://github.com/Kheops-org/testst-1
+      title: Source Code
+      icon: github
+    - url: https://argocd-server-sreez.apps.oc-med.wk.nt.local/applications/sreez/testst-1
+      title: ArgoCD Deployment
+      icon: cached
+    - url: http://localhost:8090
+      title: HyperDX Logs and Monitoring
+      icon: monitor_heart
+  tags:
+    - go
+    - sreez
+  annotations:
+    argocd/app-name: testst-1
+    backstage.io/kubernetes-id: testst-1
+    github.com/workflows: docker-image.yml
+    github.com/project-slug: Kheops-org/testst-1
+spec:
+  type: api
+  system: system:default/examples
+  lifecycle: production
+  owner: user:default/sylvaintremblay666
