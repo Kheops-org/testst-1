@@ -9,13 +9,13 @@ import (
 
 	"github.com/hyperdxio/opentelemetry-go/otelzap"
 	"github.com/hyperdxio/opentelemetry-logs-go/exporters/otlp/otlplogs"
+	sdk "github.com/hyperdxio/opentelemetry-logs-go/sdk/logs"
 	"github.com/hyperdxio/otel-config-go/otelconfig"
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+	"go.opentelemetry.io/otel/sdk/resource"
+	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
 	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/zap"
-	sdk "github.com/hyperdxio/opentelemetry-logs-go/sdk/logs"
-	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
-	"go.opentelemetry.io/otel/sdk/resource"
 )
 
 // configure common attributes for all logs
@@ -44,7 +44,7 @@ func WithTraceMetadata(ctx context.Context, logger *zap.Logger) *zap.Logger {
 
 func main() {
 	// Initialize otel config and use it across the entire app
-  println("Service starting up")
+	println("Service starting up")
 
 	otelShutdown, err := otelconfig.ConfigureOpenTelemetry()
 	if err != nil {
@@ -93,5 +93,5 @@ func wrapHandler(logger *zap.Logger, handler http.HandlerFunc) http.HandlerFunc 
 
 func ExampleHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "application/json")
-	io.WriteString(w, `{"status":"ok"}`)
+	io.WriteString(w, `{"status":"oooooook"}`)
 }
